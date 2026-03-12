@@ -1,0 +1,90 @@
+<%- include('partials/_header', { title: 'Whispering' }) %>
+
+<main class="py-5">
+
+  <div class="container">
+
+    <!-- Hero -->
+    <div class="p-4 p-md-5 mb-5 rounded-4 bg-primary border border-primary shadow-lg">
+
+      <div class="row align-items-center g-4">
+
+        <div class="col-lg-6">
+
+          <h1 class="display-5 fw-bold text-info mb-3">
+            Welcome to Whispering
+          </h1>
+
+          <p class="lead text-body-secondary">
+            Whispering is a microblogging platform that allows you to share your
+            thoughts with the world while learning Node.js and Express.
+          </p>
+
+        </div>
+
+        <div class="col-lg-6 text-center">
+
+          <img
+            src="/bg.jpg"
+            alt="three people sitting at the table laughing together"
+            class="img-fluid rounded-4 shadow"
+          />
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- What is Whispering -->
+    <div class="row g-4 mb-4">
+
+      <div class="col-lg-6">
+
+        <div class="p-4 rounded-4 bg-primary border border-primary shadow-lg h-100">
+
+          <h2 class="text-info mb-3">
+            What is Whispering?
+          </h2>
+
+          <p class="mb-0">
+            Whispering is a microblogging platform that lets users share small
+            thoughts called whispers.  
+            It is also a learning project designed to explore Node.js,
+            Express, APIs and server-side rendering with EJS.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- Community stats -->
+      <div class="col-lg-6">
+
+        <div class="p-4 rounded-4 bg-primary border border-primary shadow-lg text-center h-100">
+
+          <h2 class="text-info mb-3">
+            Community live
+          </h2>
+
+          <p class="display-6 fw-bold text-warning mb-2">
+            <%= whispers.length %>
+          </p>
+
+          <p class="text-body-secondary">
+            whispers currently available
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+<%- include('partials/_footer') %>

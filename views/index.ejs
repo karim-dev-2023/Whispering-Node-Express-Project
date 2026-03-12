@@ -1,0 +1,93 @@
+<%- include('partials/_header', { title: 'Whispering' }) %>
+
+
+<main class="py-5">
+  <div class="container">
+    <div class="p-4 p-md-5 mb-4 rounded-4   border border-primary shadow-lg " >
+      <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+        <div>
+          <h1 class="display-5 fw-bold mb-2 text-info">Whispering</h1> 
+        </div>
+
+        <button
+          class="btn btn-primary btn-lg"
+          data-bs-toggle="modal"
+          data-bs-target="#whisperModal"
+          onclick="openAddModal()"
+        >
+          <i class="bi bi-plus-circle me-2"></i>
+          Ajouter un whisper
+        </button>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <% whispers.forEach((whisper) => { %>
+        <div class="col-12 col-md-6 col-xl-4">
+          <div class="card h-100 border-primary shadow whisper-card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <span class="fw-semibold text-info">Whisper #<%= whisper.id %></span>
+
+              <div class="d-flex gap-2">
+                <button
+                  class="btn btn-outline-warning btn-sm"
+                  data-bs-toggle="modal"
+                  data-bs-target="#whisperModal"
+                  onclick="openEditModal(<%= whisper.id %>, `<%= whisper.message %>`)"
+                >
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+
+                <button
+                  class="btn btn-outline-danger btn-sm"
+                  data-bs-toggle="modal"
+                  data-bs-target="#whisperModal"
+                  onclick="openDeleteModal(<%= whisper.id %>, `<%= whisper.message %>`)"
+                >
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="card-body d-flex flex-column">
+              <p class="card-text fs-5 flex-grow-1 mb-0 "><%= whisper.message %></p>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="whisperModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content  ">
+        <form id="whisperForm">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalTitle">Whisper</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body">
+            <div id="messageField">
+              <label for="message" class="form-label">Message</label>
+              <input type="text" id="message" class="form-control" autocomplete="off" />
+            </div>
+
+            <p id="deleteText" class="d-none mb-0"></p>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              Annuler
+            </button>
+            <button type="submit" class="btn btn-primary" id="modalSubmitBtn">
+              Enregistrer
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include('partials/_footer') %>
